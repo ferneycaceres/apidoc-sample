@@ -19,7 +19,7 @@
     "url": "https://localhost:3000"
   },
   "engines": {
-    "node": "6.11.1",
-    "npm": "3.10.9"
+    "node": "8.11.1",
+    "npm": "6.0.1"
   }
 }

@@ -24,6 +24,10 @@ var userAPI = require('./routes/users');
 app.use('/apidoc', express.static('apidoc'));
 app.use('/api/v1/user', userAPI);
 
+var supplierAPI = require('./routes/suppliers');
+app.use('/apidoc', express.static('apidoc'));
+app.use('/api/v1/supplier', supplierAPI);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

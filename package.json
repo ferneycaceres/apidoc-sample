@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall":"apidoc -f 'routes/.*\\.js$' -i ./  -o apidoc",
     "start": "node ./bin/www"
   },
   "dependencies": {

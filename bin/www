@@ -17,6 +17,7 @@ const path = require('path');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+app.use('/apidoc', express.static('apidoc'));
 /**
  * Create HTTP server.
  */

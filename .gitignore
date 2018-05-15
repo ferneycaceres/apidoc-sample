@@ -3,6 +3,9 @@
 *.iml
 .eclipse/
 
+#package lock
+package-lock.json 
+
 # Apidoc
 apidoc/
 

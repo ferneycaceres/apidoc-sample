@@ -11,9 +11,15 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
+app.use(express.static(__dirname + '/apidoc'));
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
+
+app.get('/*',function(req,res){
+  res.sendFile(path.join(__dirname + '/apidoc/index.html'));
+})
+
 
 /**
  * Create HTTP server.

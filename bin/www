@@ -17,11 +17,6 @@ const path = require('path');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-app.get('/*',function(req,res){
-  res.sendFile(path.join(__dirname + '/apidoc/index.html'));
-})
-
-
 /**
  * Create HTTP server.
  */

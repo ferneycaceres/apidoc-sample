@@ -1,5 +1,5 @@
 {
-  "name": "express-apidoc-demo",
+  "name": "portalfinance-api",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -17,8 +17,8 @@
     "serve-favicon": "~2.2.1"
   },
   "apidoc": {
-    "title": "Users API",
-    "url": "https://localhost:3000"
+    "title": "Portalfinance API",
+    "url": "https://kong.portalfinance.co"
   },
   "engines": {
     "node": "8.11.1",

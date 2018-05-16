@@ -93,6 +93,8 @@ var router = express.Router();
    *          -d "{'uid' : 'i89qwurtgas78k5s','page':'1','filter':{'last_invoices':'3','debtor':<uid>,'issuer':<uid>,'owner':<uid>}}" \
    *          -X POST https://kong.portalfinance.co/documents/invoices
    */
+
+   
   router.post('/:id', function(req, res, next) {
     res.json({'id' : req.params.id,
               'firstName' : 'John',

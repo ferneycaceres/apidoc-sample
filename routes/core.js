@@ -1,6 +1,54 @@
 var express = require('express');
 var router = express.Router();
 
+
+
+/**
+   * @api {post} /core/legalentities/<uid>/certificates  Upload Digital Certificates
+   * @apiDescription Upload Digital Certificates
+   * @apiVersion 1.0.0
+   * @apiName PostDigitalCert
+   * @apiGroup CoreAPI
+   *
+   * @apiPermission None
+   * 
+   * @apiParam {String} certificate Certificate Data Encrypted.
+   * @apiParam {String} passcode Passcode Encrypted.
+   * 
+   * @apiParamExample {json} Request Body Example:
+   *     {
+   *         "certificate":<certificate>,
+   *         "passcode":<passcode>
+   *     }
+   * @apiHeader {String} Authorization Http basic auth.
+   *
+   * @apiSuccess {assignment_id} assignment_id  Assignment id.
+   *
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *       'legalentity': 'B1q2hUEKmeVp9zWepx9cnp',
+   *     }
+   *
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 4xx Any Error
+   *     {
+   *         "errors":[
+   *            {
+   *                 "field":"<field_with_error>",
+   *                 "code":"<error_code>",
+   *                 "description":"<description>",
+   *            }
+   *        ]
+   *   }
+   * @apiExample {curl} Example usage:
+   *     curl -XPOST -d '{
+   *            "certificate":<certificate>,
+   *            "passcode":<passcode>
+   *         }' 'https://kong.portalfinance.co/core/legalentities/<uid>/certificates
+   */
+
 /**
    @api {post} /core/supplier-onboardings Create LegalEntity 
    * @apiDescription Create User - UserProfile - Business Relation
@@ -11,23 +59,23 @@ var router = express.Router();
    * @apiPermission None
    * @apiParamExample {json} Request Body Example:
    *     {
-        "user":{
-            "email": "executive1@portalfinance.co",
-            "password": "portalfinance",
-            "password_confirmation": "portalfinance",
-            "role_names": ["financial"]
-        },
-        "organization":{
-            "tax_number": "764505832",
-            "name": "Portal Finance SpA"
-        },
-        "user_profile": {
-            "first_name": "Executive1",
-            "last_name": "Executive1",
-            "tax_number": "67808428",
-            "job_title": "Engineer"
-        }
-    }
+   *     "user":{
+   *         "email": "executive1@portalfinance.co",
+   *         "password": "portalfinance",
+   *         "password_confirmation": "portalfinance",
+   *         "role_names": ["financial"]
+   *     },
+   *     "organization":{
+   *         "tax_number": "764505832",
+   *        "name": "Portal Finance SpA"
+   *     },
+   *     "user_profile": {
+   *         "first_name": "Executive1",
+   *         "last_name": "Executive1",
+   *         "tax_number": "67808428",
+   *         "job_title": "Engineer"
+   *     }
+   * }
    * @apiHeader {String} Authorization Http basic auth.
    *
    * @apiSuccess {Object} User  User Object.
@@ -35,11 +83,9 @@ var router = express.Router();
    * @apiSuccess {String} User.password Password user.
    * @apiSuccess {String} User.password_confirmation Password Confirmation user.
    * @apiSuccess {Object[]} User.role_names Roles user.
-
    * @apiSuccess {Object} Organization Organization Object.
    * @apiSuccess {String} Organization.tax_number Tax Number Organization.
    * @apiSuccess {String} Organization.name Organization Name Organization.
-
    * @apiSuccess {Object} User_Profile   User Profile Object.
    * @apiSuccess {String} User_Profile.first_name First Name user.
    * @apiSuccess {String} User_Profile.last_name Last Name user.
@@ -67,7 +113,6 @@ var router = express.Router();
    *            }
    *        ]
    *   }
-
    * @apiExample {curl} Example usage:
    *     curl -XPOST -d '{
    *    "user":{
@@ -102,7 +147,6 @@ var router = express.Router();
    *         "email": "B1q2hUEKmeVp9zWepx9cnp",
    *         "password": "eVp9zWepx9="
    *     }
-
    * @apiHeader {String} Authorization Http basic auth.
    *
    * @apiSuccess {String} User.email  Email user Encrypted.
@@ -130,7 +174,7 @@ var router = express.Router();
    *            }
    *        ]
    *   }
-
+   * 
    * @apiExample {curl} Example usage:
    *     curl -XPOST -d '{
    *    "user":{
@@ -142,7 +186,6 @@ var router = express.Router();
 
    /**
    @api {get} /core/elegible-invoices Elegible invoices
-
    * @apiDescription Elegible invoices
    * 
    * -> GET elegibility criteria for financial
@@ -164,9 +207,9 @@ var router = express.Router();
    *     }
    * 
    * @apiHeaderExample {json} Request-Example:
-                 { "Content-Type": "application/json",
-                   "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
-                 }
+   *              { "Content-Type": "application/json",
+   *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
+   *              }
    *
    * @apiSuccess {Object[]} Invoices  Invoices Array Object.
    * @apiSuccess {String} Invoices.uid Invoices id.
@@ -246,7 +289,6 @@ var router = express.Router();
    *                "risk":<risk>
    *         }
    *     }
-
    * @apiHeader {String} Authorization Http basic auth.
    *
    * @apiSuccess {String} User.email  Email user Encrypted.
@@ -270,7 +312,6 @@ var router = express.Router();
    *            }
    *        ]
    *   }
-
    * @apiExample {curl} Example usage:
    *     curl -XPOST -d '{
    *    "offer":{
@@ -279,6 +320,119 @@ var router = express.Router();
    *            "risk":<risk>
    *         }' 'https://kong.portalfinance.co/core/offers/<uid>
    */
+
+   /**
+   * @api {post} /core/assignment-processes Create Assignment
+   * @apiDescription Create Assignment
+   * @apiVersion 1.0.0
+   * @apiName PostCreateAssignment
+   * @apiGroup CoreAPI
+   *
+   * @apiPermission None
+   * 
+   * @apiParam {Object} Invoices Invoices Array.
+   * @apiParam {String} offer_id Offer id.
+   * 
+   * @apiParamExample {json} Request Body Example:
+   *     {
+   *         "offer":{
+   *                  "offer_id":<offer_id>,
+   *                  "invoices":<invoices_object>,
+   *         }
+   *     }
+   * @apiHeader {String} Authorization Http basic auth.
+   *
+   * @apiSuccess {assignment_id} assignment_id  Assignment id.
+   *
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *       'assignment_id': 'B1q2hUEKmeVp9zWepx9cnp',
+   *     }
+   *
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 4xx Any Error
+   *     {
+   *         "errors":[
+   *            {
+   *                 "field":"<field_with_error>",
+   *                 "code":"<error_code>",
+   *                 "description":"<description>",
+   *            }
+   *        ]
+   *   }
+   *
+   * @apiExample {curl} Example usage:
+   *     curl -XPOST -d '{
+   *    "offer":{
+   *            "invoices":<invoices_object>,
+   *            "offer_id":<offer_id>,
+   *         }' 'https://kong.portalfinance.co/core/assignment-processes
+   */
+
+   /**
+   * @api {post} /core/assignment-processes Create Assignment
+   * @apiDescription Get Assignment
+   * @apiVersion 1.0.0
+   * @apiName GetAssigments
+   * @apiGroup CoreAPI
+   *
+   * @apiHeader {String} Authorization Token Http basic auth.
+   * 
+   * @apiHeaderExample {json} Request-Example:
+   *              { "Content-Type": "application/json",
+   *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
+   *              }
+   *
+   * 
+   * @apiSuccess {String} assignment_id Assigment Id
+   * @apiSuccess {Object[]} Offer  Offer Array Object.
+   * @apiSuccess {String} Offer.offer_id Offer id.
+   * @apiSuccess {Object[]} Invoices  Invoices Array Object.
+   * @apiSuccess {String} status_assignment  Status Assignment.
+   * 
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *        "assignment_id":"EKmeVp9zW8qfgaswd8",
+   *        "offer":{
+   *            "offer_id":<offer_id>,
+   *            "invoices":<invoices_object>,
+   *        }
+   *        "status_assignment":<status>
+   *     }
+   *
+   *
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 4xx Any Error
+   *     {
+   *         "errors":[
+   *            {
+   *                 "field":"<field_with_error>",
+   *                 "code":"<error_code>",
+   *                 "description":"<description>",
+   *            }
+   *        ]
+   *   }
+   * @apiExample {curl} Example usage:
+   *    curl -H "Content-Type: application/json" \
+   *          -d "{"assignment_id":"EKmeVp9zW8qfgaswd8",
+   *              "offer":{
+   *                "offer_id":<offer_id>,
+   *                "invoices":<invoices_object>,
+   *        }
+   *        "status_assignment":<status>}" \
+   *          -X POST https://kong.portalfinance.co/core/assignment-processes/<assignment_id>
+   */
+  
+
+
+
+   
+
+
   router.post('/:id', function(req, res, next) {
     res.json({'id' : req.params.id,
               'firstName' : 'John',

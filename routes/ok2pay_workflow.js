@@ -157,6 +157,7 @@ var router = express.Router();
    * @apiSuccess {String} Offers.tasks_done Updated by executive.
    * @apiSuccess {String} Offers.offer_status Offer Status.
    * 
+   * 
    * @apiSuccessExample Success-Response:
    *     HTTP/1.1 200 OK
    * {

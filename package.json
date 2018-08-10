@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "npm run postinstall && node ./bin/www",
     "postinstall": "rm -rf apidoc && apidoc -f 'routes/.*\\.js$' -i ./ -o apidoc/"
   },
   "dependencies": {

@@ -709,7 +709,6 @@ var router = express.Router();
    * @apiSuccess {String} available_actions.task_state Task State. 
    * @apiSuccess {Object[]} available_actions.task_information Task Information. 
    * 
-   *  
    * @apiSuccessExample Success-Response:
    * HTTP/1.1 200 OK
    * [

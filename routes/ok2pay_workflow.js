@@ -707,6 +707,8 @@ var router = express.Router();
    * @apiSuccess {String} available_actions.task_id Task id. 
    * @apiSuccess {String} available_actions.task_name Task name. 
    * @apiSuccess {String} available_actions.task_state Task State. 
+   * @apiSuccess {Object[]} available_actions.task_information Task Information. 
+   * 
    *  
    * @apiSuccessExample Success-Response:
    * HTTP/1.1 200 OK
@@ -722,17 +724,32 @@ var router = express.Router();
    *             {
    *                 "task_id":<string>,
    *                 "task_name":<string>,
-   *                 "task_state":<string>,
+   *                 "task_state":<string>
+   *                 "task_information":[
+   *                    "field_1":<string>,
+   *                    "field_2":<number>,
+   *                    "field_3":<date>
+   *                 ]
    *             },
    *             {
    *                 "task_id":<string>,
    *                 "task_name":<string>,
    *                 "task_state":<string>,
+   *                 "task_information":[
+   *                    "field_1":<string>,
+   *                    "field_2":<number>,
+   *                    "field_3":<date>
+   *                 ]
    *             },
    *             {
    *                 "task_id":<string>,
    *                 "task_name":<string>,
    *                 "task_state":<string>,
+   *                 "task_information":[
+   *                    "field_1":<string>,
+   *                    "field_2":<number>,
+   *                    "field_3":<date>
+   *                 ]
    *             }
    *         ]
    *    }

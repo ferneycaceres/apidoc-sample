@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /**
-   @api {get} /workflow/ok2pay/companies_list?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Companies list
+   @api {get} /ok2pay/group/members?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group Members
 
-   * @apiDescription Get OK2pay Companies list (Admin User Financial Institution)
+   * @apiDescription Get OK2pay Members list (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName GETOk2payCompaniesList
+   * @apiName GETOk2payMembers
    * @apiGroup OK2PayWorkflowAPI
    *
    *
@@ -21,26 +21,26 @@ var router = express.Router();
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
    *
-   * @apiSuccess {Object[]} Suppliers Array Object.
-   * @apiSuccess {Object} Suppliers.supplier Array Object.
-   * @apiSuccess {String} Suppliers.supplier.entity_id  Entity id.
-   * @apiSuccess {String} Suppliers.supplier.entity_tax_number  Entity tax number.
-   * @apiSuccess {String} Suppliers.supplier.entity_name  Entity name.
-   * @apiSuccess {Object[]} Suppliers.tasks Array Object.
-   * @apiSuccess {String} Suppliers.tasks.task_id Task id.
-   * @apiSuccess {String} Suppliers.tasks.task_name Task Name.
-   * @apiSuccess {Boolean} Suppliers.tasks.task_value Task value.
-   * @apiSuccess {String} Suppliers.available_amount Available amount.
-   * @apiSuccess {Object} Suppliers.ok2pay_group Array Object.
-   * @apiSuccess {String} Suppliers.ok2pay_group.group_id Group id.
-   * @apiSuccess {String} Suppliers.ok2pay_group.group_name Group name.
+   * @apiSuccess {Object[]} members Members Array Object.
+   * @apiSuccess {Object} members.member Member Array Object.
+   * @apiSuccess {String} members.member.entity_id  Member Entity id.
+   * @apiSuccess {String} members.member.entity_tax_number  Member Entity tax number.
+   * @apiSuccess {String} members.member.entity_name Member Entity name.
+   * @apiSuccess {Object[]} members.tasks Member's tasks Array Object.
+   * @apiSuccess {String} members.tasks.task_id Member's Task id.
+   * @apiSuccess {String} members.tasks.task_name Member's Task Name.
+   * @apiSuccess {Boolean} members.tasks.task_value Member's Task value.
+   * @apiSuccess {String} members.available_amount Available amount.
+   * @apiSuccess {Object} members.ok2pay_group Member's OK2pay Array Object.
+   * @apiSuccess {String} members.ok2pay_group.group_id Member's OK2pay  Group id.
+   * @apiSuccess {String} members.ok2pay_group.group_name Member's OK2pay Group name.
    * 
    * @apiSuccessExample Success-Response:
    *     HTTP/1.1 200 OK
    * {
-   * "suppliers":[
+   * "members":[
    *     {
-   *         "supplier": {
+   *         "member": {
    *            "entity_id":<string>,
    *            "entity_tax_number":<string>,
    *            "entity_name":<string>
@@ -84,15 +84,17 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/companies_list?page_number=<integer>&page_limit=<integer>&search=<string>
+   *          -X POST https://kong.portalfinance.co/ok2pay/group/members?page_number=<integer>&page_limit=<integer>&search=<string>
    */
 
-   /**
-   @api {get} /workflow/ok2pay/tasks_list OK2pay Tasks list
+   
 
-   * @apiDescription Get OK2pay Tasks list (Admin User Financial Institution)
+   /**
+   @api {get} /ok2pay/requirements OK2pay Requirements
+
+   * @apiDescription Get OK2pay Requirements (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName GETOk2payTaskList
+   * @apiName GETOk2payRequirements
    * @apiGroup OK2PayWorkflowAPI
    *
    *
@@ -104,29 +106,29 @@ var router = express.Router();
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
    *
-   * @apiSuccess {Object[]} Tasks Array Object.
-   * @apiSuccess {String} Tasks.task_id Task id.
-   * @apiSuccess {String} Tasks.task_name Task name.
-   * @apiSuccess {Boolean} Tasks.task_default_value Task default value.
+   * @apiSuccess {Object[]} requirements Requirements Array Object.
+   * @apiSuccess {String} requirements.id Requirement id.
+   * @apiSuccess {String} requirements.name Requirement name.
+   * @apiSuccess {Boolean} requirements.default_value Requirementdefault value.
    * 
    * @apiSuccessExample Success-Response:
    *     HTTP/1.1 200 OK
    * {
-   * "tasks":[
+   * "requirements":[
    *     {
-   *         "task_id": <string>,
-   *         "task_name":<string>,
-   *         "task_default_value":<boolean>
+   *         "id": <string>,
+   *         "name":<string>,
+   *         "default_value":<boolean>
    *    },
    *    {
-   *         "task_id": <string>,
-   *         "task_name":<string>,
-   *         "task_default_value":<boolean>
+   *         "id": <string>,
+   *         "name":<string>,
+   *         "default_value":<boolean>
    *    },
    *    {
-   *         "task_id": <string>,
-   *         "task_name":<string>,
-   *         "task_default_value":<boolean>
+   *         "id": <string>,
+   *         "name":<string>,
+   *         "default_value":<boolean>
    *    }
    * ]
    *    
@@ -144,11 +146,11 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/tasks_list
+   *          -X POST https://kong.portalfinance.co/ok2pay/requirements
    */
 
    /**
-   @api {get} /workflow/ok2pay/executives_list OK2pay Executives list
+   @api {get} /ok2pay/executives OK2pay Executives list
 
    * @apiDescription Get OK2pay Executives List (Admin User Financial Institution)
    * @apiVersion 1.0.0
@@ -165,9 +167,9 @@ var router = express.Router();
    *              }
    *
    * @apiSuccess {Object[]} executives Executives Array Object.
-   * @apiSuccess {String} executives.executive_id Executive id.
-   * @apiSuccess {String} executives.executive_full_name Executive name.
-   * @apiSuccess {Boolean} executives.executive_available Executive available.
+   * @apiSuccess {String} executives.id Executive id.
+   * @apiSuccess {String} executives.full_name Executive name.
+   * @apiSuccess {Boolean} executives.available Executive available.
    * 
    * 
    * 
@@ -176,19 +178,19 @@ var router = express.Router();
    * {
    * "executives":[
    *     {
-   *         "executive_id": <string>,
-   *         "executive_full_name":<string>,
-   *         "executive_available":<boolean>
+   *         "id": <string>,
+   *         "full_name":<string>,
+   *         "available":<boolean>
    *    },
    *    {
-   *         "executive_id": <string>,
-   *         "executive_full_name":<string>,
-   *         "executive_available":<boolean>
+   *         "id": <string>,
+   *         "full_name":<string>,
+   *         "available":<boolean>
    *    },
    *    {
-   *         "executive_id": <string>,
-   *         "executive_full_name":<string>,
-   *         "executive_available":<boolean>
+   *         "id": <string>,
+   *         "full_name":<string>,
+   *         "available":<boolean>
    *    }
    * ]
    *    
@@ -206,11 +208,11 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/executives_list
+   *          -X POST https://kong.portalfinance.co/ok2pay/executives
    */
 
    /**
-   * @api {post} /workflow/ok2pay/group/ Create OK2pay Group
+   * @api {post} /ok2pay/groups/ Create OK2pay Group
    * @apiDescription Create OK2pay group (Admin User Financial Institution)
    * @apiVersion 1.0.0
    * @apiName PostOK2payGroup
@@ -251,6 +253,7 @@ var router = express.Router();
    *              }
    *           ]
    *     }
+   * 
    * @apiHeader {String} Authorization Http basic auth.
    *
    * @apiSuccess {String} group_name Group name.
@@ -274,7 +277,7 @@ var router = express.Router();
    *                "task_value":<boolen>
    *            },
    *            {
-   *                "task_id":<string>,
+   *                "|_id":<string>,
    *                "task_value":<boolen>
    *            },
    *            {
@@ -329,11 +332,11 @@ var router = express.Router();
    *               "executive_id":<string>
    *              }
    *           ]
-   *     }' 'https://kong.portalfinance.co/workflow/ok2pay/group/
+   *     }' 'https://kong.portalfinance.co/ok2pay/group/
    */
 
     /**
-   @api {get} /workflow/ok2pay/groups_list?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group List
+   @api {get} /ok2pay/groups?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group List
 
    * @apiDescription Get OK2pay Group List (Admin User Financial Institution)
    * @apiVersion 1.0.0
@@ -406,11 +409,11 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/group_list?page_number=<integer>&page_limit=<integer>&search=<string>
+   *          -X POST https://kong.portalfinance.co/ok2pay/groups?page_number=<integer>&page_limit=<integer>&search=<string>
    */
 
    /**
-   @api {get} /workflow/ok2pay/groups/group_id=<string>
+   @api {get} /ok2pay/groups/group_id=<string>
 
    * @apiDescription Get OK2pay Group Detail (Admin User Financial Institution)
    * @apiVersion 1.0.0
@@ -437,9 +440,10 @@ var router = express.Router();
    * @apiSuccess {String} executives.executive_id Executive id. 
    * @apiSuccess {String} executives.executive_name Executive name. 
    * @apiSuccess {String} num_companies Companies that belongs to this group.
-   * @apiSuccess {Object[]} companies Companies list that belongs to this group.
-   * @apiSuccess {String} companies.entity_id Entity id.
-   * @apiSuccess {String} companies.entity_name Entity name .
+   * @apiSuccess {Object[]} members Members list that belongs to this group.
+   * @apiSuccess {String} members.entity_id Entity id.
+   * @apiSuccess {String} members.entity_tax_number Entity Tax number.
+   * @apiSuccess {String} members.entity_name Entity name .
    * 
    * @apiSuccessExample Success-Response:
    * HTTP/1.1 200 OK
@@ -465,10 +469,20 @@ var router = express.Router();
    *          "executive_id":<string>,
    *          "executive_name":<string>
    *        },
+   *        {
+   *          "executive_id":<string>,
+   *          "executive_name":<string>
+   *        }
    *        "num_companies":<number>,
-   *        "companies":[
+   *        "members":[
    *        {
    *           "entity_id":<string>,
+   *           "entity_tax_number:<string>,
+   *           "entity_name":<string>
+   *        },
+   *        {
+   *           "entity_id":<string>,
+   *           "entity_tax_number:<string>,
    *           "entity_name":<string>
    *        }
    *        ]
@@ -487,11 +501,11 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/group_id=<string>
+   *          -X POST https://kong.portalfinance.co/ok2pay/group_id=<string>
    */
 
    /**
-   * @api {put} /workflow/ok2pay/group/ Edit OK2pay Group
+   * @api {put} /ok2pay/groups?group_id=<string> Edit OK2pay Group
    * @apiDescription Edit OK2pay group (Admin User Financial Institution)
    * @apiVersion 1.0.0
    * @apiName PutOK2payGroup
@@ -589,7 +603,7 @@ var router = express.Router();
    *        ]
    *   }
    * @apiExample {curl} Example usage:
-   *     curl -XPOST -d '{
+   *     curl -XPUT -d '{
    *           "group_name":<string>,
    *           "tasks": [
    *            {
@@ -613,8 +627,50 @@ var router = express.Router();
    *               "executive_id":<string>
    *              }
    *           ]
-   *     }' 'https://kong.portalfinance.co/workflow/ok2pay/group/
+   *     }' 'https://kong.portalfinance.co/ok2pay/groups/
    */
+
+    /**
+   * @api {delete} /ok2pay/groups?group_id=<string> Delete OK2pay Group
+   * @apiDescription Delete OK2pay group (Admin User Financial Institution)
+   * @apiVersion 1.0.0
+   * @apiName DeleteOK2payGroup
+   * @apiGroup OK2PayWorkflowAPI
+   *
+   * @apiPermission None
+   * 
+   * 
+   * @apiParamExample {json} Request Body Example:
+   *      {}
+   * @apiHeader {String} Authorization Http basic auth.
+   *
+   * @apiSuccess {String} group_id Group name.
+   * 
+   *
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *           "group_id":<string>
+   *     }
+   *
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 4xx Any Error
+   *     {
+   *         "errors":[
+   *            {
+   *                 "field":"<field_with_error>",
+   *                 "code":"<error_code>",
+   *                 "description":"<description>",
+   *            }
+   *        ]
+   *   }
+   * @apiExample {curl} Example usage:
+   *     curl -XDELETE -d '{
+   *           "group_id":<string>'
+   *           'https://kong.portalfinance.co/ok2pay/groups/
+   */
+
 
    /**
    @api {get} /workflow/ok2pay/pending_offers_by_executive/?executive_id=<string>
@@ -698,11 +754,15 @@ var router = express.Router();
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
    *
+   * @apiSuccess {String} workflow_id Workflow id.
    * @apiSuccess {String} context_id Context id.
    * @apiSuccess {Object} offer Offer.
    * @apiSuccess {String} offer.offer_number Offer number.
    * @apiSuccess {String} offer.offer_amount Offer Amount.
    * @apiSuccess {String} offer.offer_issue_date Offer issue date.
+   * @apiSuccess {Object[]} graphs Graphs URLs.
+   * @apiSuccess {Object[]} graphs.graph1_url Graphs 1 URL.
+   * @apiSuccess {Object[]} graphs.graph1_url Graphs 2 URL.
    * @apiSuccess {Object[]} available_actions Available actions.
    * @apiSuccess {String} available_actions.task_id Task id. 
    * @apiSuccess {String} available_actions.task_name Task name. 
@@ -713,17 +773,23 @@ var router = express.Router();
    * HTTP/1.1 200 OK
    * [
    *    {
+   *      "workflow_id":<string>
    *      "context_id":<string>,
    *      "offer":{
    *        "offer_number":<string>,
    *        "offer_amount":<number>,
    *        "offer_issue_date":<date>
    *      },
+   *      "graphs":[
+   *        "graph1_url":<string>,
+   *        "graph2_url":<string>
+   *      ]
    *      "available_actions":[
    *             {
    *                 "task_id":<string>,
    *                 "task_name":<string>,
-   *                 "task_state":<string>
+   *                 "task_state":<string>,
+   *                 "task_url":<string>,
    *                 "task_information":[
    *                    "field_1":<string>,
    *                    "field_2":<number>,
@@ -772,62 +838,48 @@ var router = express.Router();
 
 
    /**
-   * @api {post} /workflow/ok2pay/validate/ Validate OK2pay action 
-   * @apiDescription Validate OK2pay Action (Admin User Financial Institution)
+   * @api {post} /workflow/ok2pay/<workflow_id>/task/<task_name>/approve Approve OK2Pay task
+   * @apiDescription Approve OK2pay Task (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName PostValidateOK2payAction
+   * @apiName PostApproveOK2payTask
    * @apiGroup OK2PayWorkflowAPI
    *
    * @apiPermission None
    * 
-   * @apiParam {String} context_id Context Id.
-   * @apiParam {String} task_id Task Name.
-   * @apiParam {String} task_value Task value.
+   * @apiParam {String} workflow_id Workflow Id.
+   * @apiParam {String} task_name Task Name.
    * 
    * @apiParamExample {json} Request Body Example:
-   *      {
-   *           "context_id":<string>,
-   *           "task_id":<string>,
-   *           "task_value":<boolean>
-   *     }
+   *      {}
    * @apiHeader {String} Authorization Http basic auth.
    *
-   * @apiSuccess {String} group_name Group name.
+   * @apiSuccess {String} workflow_id Workflow id.
    * @apiSuccess {String} task_id Task Id.
    * @apiSuccess {String} task_name Task Name.
    * 
-   * @apiParam {String} group_name Group name.
-   * @apiParam {Object[]} tasks Tasks.
-   * @apiParam {String} tasks.task_id Task Name.
-   * @apiParam {String} tasks.task_value Task value.
-   * @apiParam {Object[]} executives  Executives.
-   * @apiParam {String} executives.executive_id Executive id.
-   *
    * @apiSuccessExample Success-Response:
    *     HTTP/1.1 200 OK
    *     {
-   *           "group_name":<string>,
+   *           "workflow_id":<string>,
    *           "tasks": [
    *            {
-   *                "task_id":<string>,
-   *                "task_value":<boolen>
+   *                "name":<string>,
+   *                "state":<boolen>,
+   *                "approve_url":<boolen>,
+   *                "disaprove_url":<boolen>,
    *            },
    *            {
-   *                "task_id":<string>,
-   *                "task_value":<boolen>
+   *                "name":<string>,
+   *                "state":<boolen>,
+   *                "approve_url":<boolen>,
+   *                "disaprove_url":<boolen>,
    *            },
    *            {
-   *                "task_id":<string>,
-   *                "task_value":<boolen>
+   *                "name":<string>,
+   *                "state":<boolen>,
+   *                "approve_url":<boolen>,
+   *                "disaprove_url":<boolen>,
    *            }
-   *           ],
-   *           "executives":[
-   *              {
-   *               "executive_id":<string>
-   *              },
-   *              {
-   *               "executive_id":<string>
-   *              }
    *           ]
    *     }
    *
@@ -845,29 +897,71 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *     curl -XPOST -d '{
-   *           "group_name":<string>,
+   *     }' 'https://kong.portalfinance.co/workflow/ok2pay/<workflow_id>/task/<task_name>/approve
+   */
+
+   /**
+   * @api {post} /workflow/ok2pay/<workflow_id>/task/<task_name>/disapprove Disapprove OK2pay Task
+   * @apiDescription Disapprove OK2pay Task (Admin User Financial Institution)
+   * @apiVersion 1.0.0
+   * @apiName PostDisapporveOK2payTask
+   * @apiGroup OK2PayWorkflowAPI
+   *
+   * @apiPermission None
+   * 
+   * @apiParam {String} workflow_id Workflow Id.
+   * @apiParam {String} task_name Task Name.
+   * 
+   * @apiParamExample {json} Request Body Example:
+   *      {}
+   * @apiHeader {String} Authorization Http basic auth.
+   *
+   * @apiSuccess {String} group_name Group name.
+   * @apiSuccess {String} task_id Task Id.
+   * @apiSuccess {String} task_name Task Name.
+   * 
+   *
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *           "workflow_id":<string>,
    *           "tasks": [
    *            {
-   *                "task_id":<string>,
-   *                "task_value":<boolean>
+   *                "name":<string>,
+   *                "state":<boolen>,
+   *                "approve_url":<boolen>,
+   *                "disaprove_url":<boolen>,
    *            },
    *            {
-   *                "task_id":<string>,
-   *                "task_value":<boolean>
+   *                "name":<string>,
+   *                "state":<boolen>,
+   *                "approve_url":<boolen>,
+   *                "disaprove_url":<boolen>,
    *            },
    *            {
-   *                "task_id":<string>,
-   *                "task_value":<boolean>
+   *                "name":<string>,
+   *                "state":<boolen>,
+   *                "approve_url":<boolen>,
+   *                "disaprove_url":<boolen>,
    *            }
-   *           ],
-   *           "executives":[
-   *              {
-   *               "executive_id":<string>
-   *              },
-   *              {
-   *               "executive_id":<string>
-   *              }
    *           ]
-   *     }' 'https://kong.portalfinance.co/workflow/ok2pay/validate/
+   *     }
+   *
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 4xx Any Error
+   *     {
+   *         "errors":[
+   *            {
+   *                 "field":"<field_with_error>",
+   *                 "code":"<error_code>",
+   *                 "description":"<description>",
+   *            }
+   *        ]
+   *   }
+   * @apiExample {curl} Example usage:
+   *     curl -XPOST -d '{
+   *     }' 'https://kong.portalfinance.co/workflow/ok2pay/<workflow_id>/task/<task_name>/disapprove
    */
+  
   

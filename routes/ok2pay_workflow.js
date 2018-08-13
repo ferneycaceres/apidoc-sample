@@ -680,7 +680,7 @@ var router = express.Router();
    */
 
   /**
-   @api {get} /workflow/ok2pay/context/?context_id=<string>
+   @api {get} /workflow/ok2pay/context/?context_id=<string> Context by Executive
 
    * @apiDescription Get Context to validate tasks required (Executive User Financial Institution)
    * @apiVersion 1.0.0

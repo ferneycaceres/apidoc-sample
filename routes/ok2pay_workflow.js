@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /**
-   @api {get} /ok2pay/group/members?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group Members
+   @api {get} /ok2pay/groups/members?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group Members
 
    * @apiDescription Get OK2pay Members list (Admin User Financial Institution)
    * @apiVersion 1.0.0

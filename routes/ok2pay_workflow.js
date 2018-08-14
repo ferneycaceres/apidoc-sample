@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /**
-   @api {get} /ok2pay/groups/members?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group Members
+   @api {get} /ok2pay/groups/members?page_number=<integer>&page_limit=<integer>&search=<string>&sort_by=<string>&type=<string> 1 OK2pay Group Members
 
    * @apiDescription Get OK2pay Members list (Admin User Financial Institution)
    * @apiVersion 1.0.0
@@ -15,6 +15,8 @@ var router = express.Router();
    * @apiParam {String} page_number Current page.
    * @apiParam {String} page_limit Number of element to show in the current view.
    * @apiParam {String} search Search by keywords.
+   * @apiParam {String} sort_by Sort by Column.
+   * @apiParam {String} type_sort Type Sort (DES or ASC).
    * 
    * @apiHeaderExample {json} Request-Example:
    *              { "Content-Type": "application/json",
@@ -30,7 +32,7 @@ var router = express.Router();
    * @apiSuccess {String} members.tasks.task_id Member's Task id.
    * @apiSuccess {String} members.tasks.task_name Member's Task Name.
    * @apiSuccess {Boolean} members.tasks.task_value Member's Task value.
-   * @apiSuccess {String} members.available_amount Available amount.
+   * @apiSuccess {Number} members.available_amount Available amount.
    * @apiSuccess {Object} members.ok2pay_group Member's OK2pay Array Object.
    * @apiSuccess {String} members.ok2pay_group.group_id Member's OK2pay  Group id.
    * @apiSuccess {String} members.ok2pay_group.group_name Member's OK2pay Group name.
@@ -336,7 +338,7 @@ var router = express.Router();
    */
 
     /**
-   @api {get} /ok2pay/groups?page_number=<integer>&page_limit=<integer>&search=<string> OK2pay Group List
+   @api {get} /ok2pay/groups?page_number=<integer>&page_limit=<integer>&search=<string>&sort_by=<string>&type_sort=<string> 2 OK2pay Group List
 
    * @apiDescription Get OK2pay Group List (Admin User Financial Institution)
    * @apiVersion 1.0.0
@@ -346,6 +348,8 @@ var router = express.Router();
    * @apiParam {String} page_number Current page.
    * @apiParam {String} page_limit Number of element to show in the current view.
    * @apiParam {String} search Search by keywords.
+   * @apiParam {String} sort_by Sort by Column.
+   * @apiParam {String} type_sort Type Sort (DES or ASC).
    *
    *
    * @apiHeader {String} Authorization Token Http basic auth.
@@ -358,12 +362,6 @@ var router = express.Router();
    *
    * @apiSuccess {String} group_id Group id.
    * @apiSuccess {String} group_name Group name.
-   * @apiSuccess {Object[]} tasks Task Array Object.
-   * @apiSuccess {String} tasks.task_name Task name.
-   * @apiSuccess {Object[]} tasks.task_name Task name.
-   * @apiSuccess {Object[]} executives Executives Array Object.
-   * @apiSuccess {String} executives.executive_id Executive id. 
-   * @apiSuccess {String} executives.executive_name Executive name. 
    * @apiSuccess {String} num_companies Companies that belongs to this group.
    * 
    * 
@@ -373,26 +371,7 @@ var router = express.Router();
    *   [
    *      "group_id":<string>,
    *      "group_name":<string>,
-   *      "tasks":[
-   *        {
-   *           "task_name":<string>,
-   *           "task_value":<boolean>
-   *        },
-   *        {
-   *          "task_name":<string>,
-   *          "task_value":<boolean>
-   *        },
-   *        {
-   *          "task_name":<string>,
-   *          "task_value":<boolean>
-   *        }
-   *        ],
-   *        "executives":[
-   *        {
-   *          "executive_id":<string>,
-   *          "executive_name":<string>
-   *        },
-   *        "num_companies":<number>
+   *      "num_companies":<number>
    *    ]
    * }
    *    
@@ -413,7 +392,7 @@ var router = express.Router();
    */
 
    /**
-   @api {get} /ok2pay/groups/group_id=<string>
+   @api {get} /ok2pay/groups/group_id=<string> 3 OK2pay Group details
 
    * @apiDescription Get OK2pay Group Detail (Admin User Financial Institution)
    * @apiVersion 1.0.0
@@ -477,12 +456,12 @@ var router = express.Router();
    *        "members":[
    *        {
    *           "entity_id":<string>,
-   *           "entity_tax_number:<string>,
+   *           "entity_tax_number":<string>,
    *           "entity_name":<string>
    *        },
    *        {
    *           "entity_id":<string>,
-   *           "entity_tax_number:<string>,
+   *           "entity_tax_number":<string>,
    *           "entity_name":<string>
    *        }
    *        ]

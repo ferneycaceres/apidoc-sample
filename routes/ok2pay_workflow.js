@@ -409,16 +409,17 @@ var router = express.Router();
    *              { "Content-Type": "application/json",
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
-   *
-   * @apiSuccess {String} group_id Group id.
-   * @apiSuccess {String} group_name Group name.
-   * @apiSuccess {Object[]} tasks Task Array Object.
-   * @apiSuccess {String} tasks.task_name Task name.
-   * @apiSuccess {Object[]} tasks.task_name Task name.
-   * @apiSuccess {Object[]} executives Executives Array Object.
-   * @apiSuccess {String} executives.executive_id Executive id. 
-   * @apiSuccess {String} executives.executive_name Executive name. 
-   * @apiSuccess {String} num_companies Companies that belongs to this group.
+   * @apiSuccess {Object} group Group Object.
+   * @apiSuccess {String} group.group_id Group id.
+   * @apiSuccess {String} group.group_name Group name.
+   * @apiSuccess {Object[]} group.tasks Task Array Object.
+   * @apiSuccess {String} group.tasks.task_id Task id.
+   * @apiSuccess {String} group.tasks.task_name Task name.
+   * @apiSuccess {boolean} group.tasks.task_value Task Value.
+   * @apiSuccess {Object[]} group.executives Executives Array Object.
+   * @apiSuccess {String} group.executives.executive_id Executive id. 
+   * @apiSuccess {String} group.executives.executive_name Executive name. 
+   * @apiSuccess {String} num_members Companies that belongs to this group.
    * @apiSuccess {Object[]} members Members list that belongs to this group.
    * @apiSuccess {String} members.entity_id Entity id.
    * @apiSuccess {String} members.entity_tax_number Entity Tax number.
@@ -427,45 +428,50 @@ var router = express.Router();
    * @apiSuccessExample Success-Response:
    * HTTP/1.1 200 OK
    * {
-   *      "group_id":<string>,
-   *      "group_name":<string>,
-   *      "tasks":[
-   *        {
-   *           "task_name":<string>,
-   *           "task_value":<boolean>
+   *    "group": {
+   *        "group_id":<string>,
+   *        "group_name":<string>,
+   *        "tasks":[
+   *          {
+   *             "task_id":<string>,
+   *             "task_name":<string>,
+   *             "task_value":<boolean>
+   *          },
+   *          {
+   *            "task_id":<string>,
+   *            "task_name":<string>,
+   *            "task_value":<boolean>
+   *          },
+   *          {
+   *            "task_id":<string>,
+   *            "task_name":<string>,
+   *            "task_value":<boolean>
+   *          }
+   *          ],
+   *          "executives":[
+   *          {
+   *            "executive_id":<string>,
+   *            "executive_name":<string>
+   *          },
+   *          {
+   *            "executive_id":<string>,
+   *            "executive_name":<string>
+   *          }
    *        },
-   *        {
-   *          "task_name":<string>,
-   *          "task_value":<boolean>
-   *        },
-   *        {
-   *          "task_name":<string>,
-   *          "task_value":<boolean>
-   *        }
-   *        ],
-   *        "executives":[
-   *        {
-   *          "executive_id":<string>,
-   *          "executive_name":<string>
-   *        },
-   *        {
-   *          "executive_id":<string>,
-   *          "executive_name":<string>
-   *        }
-   *        "num_companies":<number>,
+   *        "num_members":<number>,
    *        "members":[
    *        {
-   *           "entity_id":<string>,
-   *           "entity_tax_number":<string>,
-   *           "entity_name":<string>
+   *            "entity_id":<string>,
+   *            "entity_tax_number":<string>,
+   *            "entity_name":<string>
    *        },
    *        {
-   *           "entity_id":<string>,
-   *           "entity_tax_number":<string>,
-   *           "entity_name":<string>
+   *            "entity_id":<string>,
+   *            "entity_tax_number":<string>,
+   *            "entity_name":<string>
    *        }
    *        ]
-   * }
+   *   }
    *    
    * @apiErrorExample Error-Response:
    *     HTTP/1.1 4xx Any Error
@@ -484,7 +490,7 @@ var router = express.Router();
    */
 
    /**
-   * @api {put} /ok2pay/groups?group_id=<string> Edit OK2pay Group
+   * @api {put} /ok2pay/groups?group_id=<string> 4 Edit OK2pay Group
    * @apiDescription Edit OK2pay group (Admin User Financial Institution)
    * @apiVersion 1.0.0
    * @apiName PutOK2payGroup
@@ -652,7 +658,7 @@ var router = express.Router();
 
 
    /**
-   @api {get} /workflow/ok2pay/pending_offers_by_executive/?executive_id=<string>
+   @api {get} /workflow/ok2pay/pending_offers_by_executive/?executive_id=<string> Pending Offer by Executive
 
    * @apiDescription Get Pending offer to approve by Executive (Executive User Financial Institution)
    * @apiVersion 1.0.0
@@ -671,10 +677,11 @@ var router = express.Router();
    *              }
    *
    * @apiSuccess {String} context_id Context id.
-   * @apiSuccess {String} offer_id Offer id.
-   * @apiSuccess {String} offer_number Offer number.
-   * @apiSuccess {String} offer_amount Offer Amount.
-   * @apiSuccess {String} offer_issue_date Offer issue date.
+   * @apiSuccess {Object} offer Offer Object.
+   * @apiSuccess {String} offer.id Offer id.
+   * @apiSuccess {String} offer.number Offer number.
+   * @apiSuccess {String} offer.amount Offer Amount.
+   * @apiSuccess {String} offer.issue_date Offer issue date.
    * @apiSuccess {Object[]} supplier Supplier.
    * @apiSuccess {String} supplier.legal_entity_id Supplier id. 
    * @apiSuccess {String} supplier.legal_entity_name Supplier name. 
@@ -685,11 +692,14 @@ var router = express.Router();
    * [
    *    {
    *      "context_id":<string>,
-   *      "offer_id":<string>,
-   *      "offer_number":<string>,
-   *      "offer_amount":<number>,
-   *      "offer_issue_date":<date>
-   *      "supplier":
+   *       "offer":
+   *       {
+   *            "id":<string>,
+   *            "number":<number>,
+   *            "amount":<string>
+   *            "issue_date":<date>
+   *       }
+   *       "supplier":
    *       {
    *           "legal_entity_id":<string>,
    *           "legal_entity_name":<string>,
@@ -943,4 +953,85 @@ var router = express.Router();
    *     }' 'https://kong.portalfinance.co/workflow/ok2pay/<workflow_id>/task/<task_name>/disapprove
    */
   
-  
+  /**
+   * @api {put} /ok2pay/groups/members?member_id=<string> Update OK2pay Group by member
+   * @apiDescription Update OK2pay group (Admin User Financial Institution)
+   * @apiVersion 1.0.0
+   * @apiName PutOK2payGroupbyMember
+   * @apiGroup OK2PayWorkflowAPI
+   *
+   * @apiPermission None
+   * 
+   * @apiParam {String} group_id Member id.
+   * 
+   * @apiParamExample {json} Request Body Example:
+   *      {
+   *           "group_id":<string>
+   *      }
+   * @apiHeader {String} Authorization Http basic auth.
+   *
+   * @apiSuccess {Object} members Members Array Object.
+   * @apiSuccess {Object} members.member Member Array Object.
+   * @apiSuccess {String} members.member.entity_id  Member Entity id.
+   * @apiSuccess {String} members.member.entity_tax_number  Member Entity tax number.
+   * @apiSuccess {String} members.member.entity_name Member Entity name.
+   * @apiSuccess {Object[]} members.tasks Member's tasks Array Object.
+   * @apiSuccess {String} members.tasks.task_id Member's Task id.
+   * @apiSuccess {String} members.tasks.task_name Member's Task Name.
+   * @apiSuccess {Boolean} members.tasks.task_value Member's Task value.
+   * @apiSuccess {Number} members.available_amount Available amount.
+   * @apiSuccess {Object} members.ok2pay_group Member's OK2pay Array Object.
+   * @apiSuccess {String} members.ok2pay_group.group_id Member's OK2pay  Group id.
+   * @apiSuccess {String} members.ok2pay_group.group_name Member's OK2pay Group name.
+   * 
+   *
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *        "member": {
+   *            "entity_id":<string>,
+   *            "entity_tax_number":<string>,
+   *            "entity_name":<string>
+   *         },
+   *         "tasks":[
+   *             {
+   *                "task_id":<string>,
+   *                "task_name":<string>,
+   *                "task_value":<boolean>
+   *             },
+   *             {
+   *                "task_id":<string>,
+   *                "task_name":<string>,
+   *                "task_value":<boolean>
+   *             },
+   *             {
+   *                "task_id":<string>,
+   *                "task_name":<string>,
+   *                "task_value":<boolean>
+   *             }
+   *         ],
+   *        "available_amount":<number>,
+   *        "ok2pay_group":{
+   *            "group_id":<string>,
+   *            "group_name":<string>
+   *        }
+   *      }
+   *    }
+   *
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 4xx Any Error
+   *     {
+   *         "errors":[
+   *            {
+   *                 "field":"<field_with_error>",
+   *                 "code":"<error_code>",
+   *                 "description":"<description>",
+   *            }
+   *        ]
+   *   }
+   * @apiExample {curl} Example usage:
+   *     curl -XPUT -d '{
+   *           "group_id":<string>
+   *     }' 'https://kong.portalfinance.co/ok2pay/groups/members?member_id=<string>
+   */

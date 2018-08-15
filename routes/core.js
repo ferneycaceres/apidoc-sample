@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
-
 /**
    * @api {post} /core/legalentities/<uid>/certificates  Upload Digital Certificates
    * @apiDescription Upload Digital Certificates
@@ -134,7 +132,7 @@ var router = express.Router();
    * 
    */
 
-  /**
+/**
    * @api {post} /core/sign_in Sign In User 
    * @apiDescription Sign_in User
    * @apiVersion 1.0.0
@@ -183,8 +181,7 @@ var router = express.Router();
    *    }' 'https://kong.portalfinance.co/core/sign_in'
    */
 
-
-   /**
+/**
    @api {get} /core/elegible-invoices Elegible invoices
    * @apiDescription Elegible invoices
    * 
@@ -268,7 +265,7 @@ var router = express.Router();
    *          -X POST https://kong.portalfinance.co/core/elegible-invoices
    */
 
-    /**
+/**
    * @api {post} /core/offers/<uid> Create Offer 
    * @apiDescription Create Offer
    * @apiVersion 1.0.0
@@ -321,7 +318,7 @@ var router = express.Router();
    *         }' 'https://kong.portalfinance.co/core/offers/<uid>
    */
 
-   /**
+/**
    * @api {post} /core/assignment-processes Create Assignment
    * @apiDescription Create Assignment
    * @apiVersion 1.0.0
@@ -371,7 +368,7 @@ var router = express.Router();
    *         }' 'https://kong.portalfinance.co/core/assignment-processes
    */
 
-   /**
+/**
    * @api {post} /core/assignment-processes Create Assignment
    * @apiDescription Get Assignment
    * @apiVersion 1.0.0
@@ -426,17 +423,13 @@ var router = express.Router();
    *        "status_assignment":<status>}" \
    *          -X POST https://kong.portalfinance.co/core/assignment-processes/<assignment_id>
    */
-  
 
+router.post('/:id', function(req, res, next) {
+	res.json({
+		id: req.params.id,
+		firstName: 'John',
+		lastName: 'John'
+	});
+});
 
-
-   
-
-
-  router.post('/:id', function(req, res, next) {
-    res.json({'id' : req.params.id,
-              'firstName' : 'John',
-              'lastName' : 'John'});
-  });
-  
-  module.exports = router;
+module.exports = router;

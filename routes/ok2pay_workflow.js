@@ -1338,7 +1338,7 @@ var router = express.Router();
    */
 
 /**
-   * @api {put} /ok2pay/groups/members?member_id=<string> [Parter] Update OK2pay Group by member
+   * @api {put} /ok2pay/groups/members?member_id=<string> [Partner] Update OK2pay Group by member
    * @apiDescription Update OK2pay group (Admin User Partner)
    * @apiVersion 1.0.0
    * @apiName PutOK2payGroupbyMember

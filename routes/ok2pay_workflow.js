@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 /**
-   @api {get} /ok2pay/financial-groups?page_number=<integer>&page_limit=<integer>&search=<string>&sort_by=<string>&type=<string> [Financial] List OK2pay Financial Groups
+   @api {get} /ok2pay/risk-groups?page_number=<integer>&page_limit=<integer>&search=<string>&sort_by=<string>&type=<string> [Financial] List OK2pay Financial Groups
 
-   * @apiDescription Get OK2pay Financial Groups (Admin User Financial Institution)
+   * @apiDescription Get OK2pay Risk Groups (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName GETOk2payFinancialGroups
+   * @apiName GETOk2payRiskroups
    * @apiGroup OK2PayWorkflowAPI
    *
    *
@@ -76,15 +76,15 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/ok2pay/financial-groups?page_number=<integer>&page_limit=<integer>&search=<string>&sort_by=<string>&type=<string>
+   *          -X POST https://kong.portalfinance.co/ok2pay/risk-groups?page_number=<integer>&page_limit=<integer>&search=<string>&sort_by=<string>&type=<string>
    */
 
 
    /**
-   * @api {post} /ok2pay/financial-groups/ [Financial] Create Financial OK2pay Group
-   * @apiDescription Create OK2pay Financial group (Admin User Financial Institution)
+   * @api {post} /ok2pay/risk-groups/ [Financial] Create Risk OK2pay Group
+   * @apiDescription Create OK2pay Risk group (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName PostOK2payFinancialGroup
+   * @apiName PostOK2payRiskGroup
    * @apiGroup OK2PayWorkflowAPI
    *
    * @apiPermission None
@@ -175,15 +175,15 @@ var router = express.Router();
    *                "task_value":<boolean>
    *            }
    *           ]
-   *     }' 'https://kong.portalfinance.co/ok2pay/financial-groups/
+   *     }' 'https://kong.portalfinance.co/ok2pay/risk-groups/
    */
 
 
    /**
-   * @api {put} /ok2pay/financial-groups/group_id=<string> [Financial] Update Financial OK2pay Group
-   * @apiDescription Update OK2pay Financial group (Admin User Financial Institution)
+   * @api {put} /ok2pay/risk-groups/group_id=<string> [Financial] Update Risk OK2pay Group
+   * @apiDescription Update OK2pay Risk group (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName PutOK2payFinancialGroup
+   * @apiName PutOK2payRiskGroup
    * @apiGroup OK2PayWorkflowAPI
    *
    * @apiPermission None
@@ -275,15 +275,15 @@ var router = express.Router();
    *                "task_value":<boolean>
    *            }
    *           ]
-   *     }' 'https://kong.portalfinance.co/ok2pay/financial-groups/group_id=<string>
+   *     }' 'https://kong.portalfinance.co/ok2pay/risk-groups/group_id=<string>
    */
 
 
    /**
-   * @api {delete} /ok2pay/financial-groups/group_id=<string> [Financial] Delete Financial OK2pay Group
-   * @apiDescription Delete OK2pay Financial group (Admin User Financial Institution)
+   * @api {delete} /ok2pay/risk-groups/group_id=<string> [Financial] Delete Risk OK2pay Group
+   * @apiDescription Delete OK2pay Risk group (Admin User Financial Institution)
    * @apiVersion 1.0.0
-   * @apiName DeleteOK2payFinancialGroup
+   * @apiName DeleteOK2payRiskGroup
    * @apiGroup OK2PayWorkflowAPI
    *
    * @apiPermission None
@@ -328,7 +328,7 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *     curl -XPOST -d '{
-   *     }' 'https://kong.portalfinance.co/ok2pay/financial-groups/group_id=<string>
+   *     }' 'https://kong.portalfinance.co/ok2pay/risk-groups/group_id=<string>
    */
 
 
@@ -986,7 +986,7 @@ var router = express.Router();
    */
 
 /**
-   @api {get} /workflow/ok2pay/pending_offers_by_executive/?executive_id=<string> [Partner] Pending Offer by Executive
+   @api {get} /ok2pay/contexts/?executive_id=<string> [Partner] Pending Offer by Executive
 
    * @apiDescription Get Pending offer to approve by Executive (Executive User Partner)
    * @apiVersion 1.0.0
@@ -1049,15 +1049,15 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/pending_offers_by_executive/?executive_id=<string>
+   *          -X POST https://kong.portalfinance.co/ok2pay/contexts/?executive_id=<string>
    */
 
    /**
-   @api {get} /workflow/ok2pay/confirm_group/ [Partner] List of supplier to confirm OK2pay Group
+   @api {get} /ok2pay/reassign_group/ [Partner] List of supplier to reassign OK2pay Group
 
-   * @apiDescription Get Pending offer to approve by Executive (Executive User Partner)
+   * @apiDescription Get List of supplier to reassign OK2pay Group (Executive User Partner)
    * @apiVersion 1.0.0
-   * @apiName GETOk2payConfirmGroupSuppliers
+   * @apiName GETOk2payReassignGroupSuppliers
    * @apiGroup OK2PayWorkflowAPI
    * 
    *
@@ -1070,11 +1070,11 @@ var router = express.Router();
    *              }
    *
    * @apiSuccess {String} entity_id Entity id.
-   * @apiSuccess {String} entity_taxnumber Entity Tax Number.
+   * @apiSuccess {String} entity_tax_number Entity Tax Number.
    * @apiSuccess {String} entity_name Entity Name.
    * @apiSuccess {Object} group Group Object.
    * @apiSuccess {String} group.id Group id.
-   * @apiSuccess {String} group.taxnumber Group Tax Number.
+   * @apiSuccess {String} group.tax_number Group Tax Number.
    * @apiSuccess {String} group.name Group Name.
    * 
    * 
@@ -1083,11 +1083,11 @@ var router = express.Router();
    * [
    *    {
    *      "entity_id":<string>
-   *      "entity_taxnumber":<string>
+   *      "entity_tax_number":<string>
    *      "entity_name":<string>
    *      "group":{
    *        "id":<string>,
-   *        "taxnumber":<string>,
+   *        "tax_number":<string>,
    *        "name":<string>
    *      }
    *    }
@@ -1110,7 +1110,7 @@ var router = express.Router();
    */
 
 /**
-   @api {get} /workflow/ok2pay/context/?context_id=<string> [Partner] Context Detail by Executive
+   @api {get} /ok2pay/context/<string> [Partner] Context Detail by Executive
 
    * @apiDescription Get Context to validate tasks required (Executive User Partner)
    * @apiVersion 1.0.0
@@ -1207,7 +1207,7 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/workflow/ok2pay/context/?context_id=<string>
+   *          -X POST https://kong.portalfinance.co/ok2pay/context/<string>
    */
 
 /**

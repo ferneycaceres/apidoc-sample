@@ -1004,6 +1004,7 @@ var router = express.Router();
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
    *
+   * @apiSuccess {String} executive_id Executive id.
    * @apiSuccess {String} context_id Context id.
    * @apiSuccess {Object} offer Offer Object.
    * @apiSuccess {String} offer.id Offer id.
@@ -1019,6 +1020,7 @@ var router = express.Router();
    * HTTP/1.1 200 OK
    * [
    *    {
+   *      "executive_id":<string>,
    *      "context_id":<string>,
    *       "offer":
    *       {

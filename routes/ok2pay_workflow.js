@@ -1130,69 +1130,44 @@ var router = express.Router();
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
    *
-   * @apiSuccess {String} workflow_id Workflow id.
    * @apiSuccess {String} context_id Context id.
    * @apiSuccess {Object} offer Offer.
    * @apiSuccess {String} offer.offer_number Offer number.
    * @apiSuccess {String} offer.offer_amount Offer Amount.
    * @apiSuccess {String} offer.offer_issue_date Offer issue date.
-   * @apiSuccess {Object[]} graphs Graphs URLs.
-   * @apiSuccess {Object[]} graphs.graph1_url Graphs 1 URL.
-   * @apiSuccess {Object[]} graphs.graph1_url Graphs 2 URL.
-   * @apiSuccess {Object[]} available_actions Available actions.
-   * @apiSuccess {String} available_actions.task_id Task id. 
-   * @apiSuccess {String} available_actions.task_name Task name. 
-   * @apiSuccess {String} available_actions.task_state Task State. 
-   * @apiSuccess {Object[]} available_actions.task_information Task Information. 
+   * @apiSuccess {String} offer.offer_due_date Offer Due date.
+   * @apiSuccess {Object[]} workflow  Workflow Array Object.
+   * @apiSuccess {String} workflow.id  Workflow id.
+   * @apiSuccess {Object} workflow.available_actions Object. 
+   * @apiSuccess {String} workflow.available_actions.state State. 
+   * @apiSuccess {String} workflow.available_actions.type Type.
+   * @apiSuccess {String} workflow.available_actions.front_end_element FE element.
+   * @apiSuccess {String} workflow.available_actions.approve Approve url.
+   * @apiSuccess {String} workflow.available_actions.disapprove Disapprove url.
+   * @apiSuccess {String} workflow.available_actions.details_url Details url.
    * 
    * @apiSuccessExample Success-Response:
    * HTTP/1.1 200 OK
    * [
    *    {
-   *      "workflow_id":<string>
    *      "context_id":<string>,
    *      "offer":{
    *        "offer_number":<string>,
    *        "offer_amount":<number>,
-   *        "offer_issue_date":<date>
+   *        "offer_issue_date":<date>,
+   *        "offer_due_date":<date>
    *      },
-   *      "graphs":[
-   *        "graph1_url":<string>,
-   *        "graph2_url":<string>
-   *      ]
-   *      "available_actions":[
-   *             {
-   *                 "task_id":<string>,
-   *                 "task_name":<string>,
-   *                 "task_state":<string>,
-   *                 "task_url":<string>,
-   *                 "task_information":[
-   *                    "field_1":<string>,
-   *                    "field_2":<number>,
-   *                    "field_3":<date>
-   *                 ]
-   *             },
-   *             {
-   *                 "task_id":<string>,
-   *                 "task_name":<string>,
-   *                 "task_state":<string>,
-   *                 "task_information":[
-   *                    "field_1":<string>,
-   *                    "field_2":<number>,
-   *                    "field_3":<date>
-   *                 ]
-   *             },
-   *             {
-   *                 "task_id":<string>,
-   *                 "task_name":<string>,
-   *                 "task_state":<string>,
-   *                 "task_information":[
-   *                    "field_1":<string>,
-   *                    "field_2":<number>,
-   *                    "field_3":<date>
-   *                 ]
-   *             }
-   *         ]
+   *      "workflow":{
+   *             "id":<string>
+   *             "available_actions":[
+   *                "state":<string>,
+   *                "type": <string>,
+   *                "front_end_element":<string>,
+   *                "approve":<string>,
+   *                "disapprove":<string>,
+   *                "details_url":<string>
+   *             ]
+   *        }
    *    }
    * ]
    *    

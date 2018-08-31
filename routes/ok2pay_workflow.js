@@ -30,6 +30,9 @@ var router = express.Router();
    * @apiSuccess {String} tasks.id  Task id.
    * @apiSuccess {String} tasks.name  Task name.
    * @apiSuccess {Boolean} tasks.value  Task value.
+   * @apiSuccess {Object[]} executives Executives Array Object.
+   * @apiSuccess {String} executives.executive_id Executives id.
+   * @apiSuccess {String} executives.executive_name Executives name.
    * 
    * @apiSuccessExample Success-Response:
    *     HTTP/1.1 200 OK
@@ -52,13 +55,18 @@ var router = express.Router();
    *                "id":<string>,
    *                "name":<string>,
    *                "value":<string>
-   *            },
-   *            {
-   *                "id":<string>,
-   *                "name":<string>,
-   *                "value":<string>
    *            }
-   *       ]
+   *       ],
+   *       "executives":[
+   *          {
+   *            "executive_id":<string>,
+   *            "executive_name":<string>
+   *          },
+   *          {
+   *            "executive_id":<string>,
+   *            "executive_name":<string>
+   *          }
+   *        ]  
    *    }
    * ]
    *    

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /**
-   * @api {post} /api-token-auth Sign In User 
+   * @api {post} /sign-in Sign In User 
    * @apiDescription Sign in Users
    * @apiVersion 1.0.0
    * @apiName PostAuthorization
@@ -63,7 +63,7 @@ var router = express.Router();
    *     curl -XPOST -d '{
    *         "username": "B1q2hUEKmeVp9zWepx9cnp",
    *         "password": "eVp9zWepx9=",
-   *    }' 'https://kong.portalfinance.co/'
+   *    }' 'https://kong.portalfinance.co/sign-in/'
    */
 
    /**
@@ -173,9 +173,6 @@ var router = express.Router();
    * @apiParam {String} company.economic_sector Economic sector code.
    * @apiParam {Number} company.monthly_net_profit Montly net profit.
    * @apiParam {Number} company.days_of_average_credit_to_clients Days of average credit to clients.
-   * @apiParam {Object} business_relation Business Relation Object.
-   * @apiParam {String} business_relation.relation_type Type of relationship (supplier_of).
-   * @apiParam {String} business_relation.party_2 2nd Party (Partner id).
    * 
    * @apiParamExample {json} Request Body Example:
    * {
@@ -191,10 +188,6 @@ var router = express.Router();
    *            "economic_sector":<string>,
    *            "monthly_net_profit":<number>,
    *            "days_of_average_credit_to_clients":<number>
-   *        },
-   *        "business_relation":{
-   *            "relation_type":<string>,
-   *            "party_2":<string>
    *        }
    * }
    * @apiSuccess {Object} user User Object.
@@ -249,10 +242,6 @@ var router = express.Router();
    *            "economic_sector":<string>,
    *            "monthly_net_profit":<number>,
    *            "days_of_average_credit_to_clients":<number>
-   *        },
-   *        "business_relation":{
-   *            "relation_type":<string>,
-   *            "party_2":<string>
    *        }
    * }' 'https://kong.portalfinance.co/supplier-onboardings'
    */
@@ -406,10 +395,10 @@ var router = express.Router();
    */
 
    /**
-   * @api {post} /validate-token Validate generated code
+   * @api {post} /validate-code Validate generated code
    * @apiDescription Validate generated code to restart Password sent to user by email
    * @apiVersion 1.0.0
-   * @apiName PostValidateToken
+   * @apiName PostValidateCode
    * @apiGroup SupplierOnboardingAPI
    *
    * @apiPermission None

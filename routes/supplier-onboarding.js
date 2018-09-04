@@ -27,6 +27,11 @@ var router = express.Router();
    * @apiSuccess {String} user.first_name User Firstname.
    * @apiSuccess {String} user.last_name User Lastname.
    * @apiSuccess {String} user.tin User Tax number.
+   * @apiSuccess {Object[]} groups Permission groups.
+   * @apiSuccess {String} groups.name group name.
+   * @apiSuccess {Object[]} groups.frontend_components Frontend components.
+   * @apiSuccess {String} groups.frontend_components.name Frontend name.
+   * 
    * 
    *
    * @apiSuccessExample Success-Response:
@@ -40,10 +45,14 @@ var router = express.Router();
    *           "last_name":<string>,
    *           "tin":<string>
    *           },
-   *       "frontend_components":[
-   *            "permission_1",
-   *            "permission_2",
-   *            "permission_3"
+   *       "groups":[{
+   *            "name":<string>,
+   *            "frontend_components":[
+   *                {
+   *                    "name":<string>,
+   *                }
+   *            ]    
+   *          }
    *        ]
    *     }
    *
@@ -274,15 +283,21 @@ var router = express.Router();
    *              }
    *
    * @apiSuccess {Object[]} available_accounts Available accounts Array Object.
-   * @apiSuccess {string} available_accounts.account_provider account provider.
-   * @apiSuccess {string} available_accounts.name account provider name.
+   * @apiSuccess {String} available_accounts.code account provider code.
+   * @apiSuccess {String} available_accounts.provider_name account provider name.
+   * @apiSuccess {Boolean} available_accounts.linked account provider name.
+   * @apiSuccess {String} available_accounts.account_id account id.
    * 
    * @apiSuccessExample Success-Response:
    * HTTP/1.1 200 OK
    * {
    *      "available_accounts":[
-   *        "account_provider":<string>,
-   *        "name":<string>
+   *      {
+   *         "code": <string>,
+   *         "provider_name": <string>,
+   *         "linked": <boolean>,
+   *         "account_id": <string>
+   *       }
    *      ]
    * }
    *    

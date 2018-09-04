@@ -233,6 +233,7 @@ var router = express.Router();
    *        ]
    *   }
    * 
+   * 
    * @apiExample {curl} Example usage:
    *     curl -XPOST -d '{
    *       "user":{

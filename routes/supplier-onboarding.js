@@ -247,6 +247,9 @@ var router = express.Router();
    *            "economic_sector":<string>,
    *            "monthly_net_profit":<number>,
    *            "days_of_average_credit_to_clients":<number>
+   *        },
+   *        "business_relation":{
+   *            "party_2":<string>
    *        }
    * }' 'https://kong.portalfinance.co/supplier-onboardings'
    */

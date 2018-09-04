@@ -173,6 +173,8 @@ var router = express.Router();
    * @apiParam {String} company.economic_sector Economic sector code.
    * @apiParam {Number} company.monthly_net_profit Montly net profit.
    * @apiParam {Number} company.days_of_average_credit_to_clients Days of average credit to clients.
+   * @apiParam {Object} business_relation Business Relation Object.
+   * @apiParam {Object} business_relation.party_2 2nd Party legal entity id.
    * 
    * @apiParamExample {json} Request Body Example:
    * {
@@ -188,6 +190,9 @@ var router = express.Router();
    *            "economic_sector":<string>,
    *            "monthly_net_profit":<number>,
    *            "days_of_average_credit_to_clients":<number>
+   *        },
+   *        "business_relation":{
+   *            "party_2":<string>
    *        }
    * }
    * @apiSuccess {Object} user User Object.
@@ -247,13 +252,16 @@ var router = express.Router();
    */
 
     /**
-   @api {get} /accounts/available-accounts/ Retrieve Available Accounts
+   @api {get} /accounts/available-accounts/<country_code>/<tin> Retrieve Available Accounts
 
    * @apiDescription Retrieve Available Accounts(Tabs)
    * @apiVersion 1.0.0
    * @apiName GetAvailableAccounts
    * @apiGroup SupplierOnboardingAPI
    *
+   * 
+   * @apiParam {String} country_code country code.
+   * @apiParam {String} tin Tax number.
    *
    * @apiHeader {String} Authorization Token Http basic auth.
    * 
@@ -289,7 +297,7 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/accounts/available-accounts/
+   *          -X POST https://kong.portalfinance.co/accounts/available-accounts/<country_code>/<tin>
    */
 
    /**

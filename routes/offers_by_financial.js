@@ -438,12 +438,11 @@ var router = express.Router();
    *          -X GET https://kong.portalfinance.co/suppliers/<supplier_id>
    */
 
-    /**
+  /**
    @api {get} /elegible-invoices/<supplier_tin> [Financial] Elegible invoices by supplier
-
    * @apiDescription Get Elegible invoices by supplier
    * @apiVersion 1.0.0
-   * @apiName GETSupplierDetails
+   * @apiName GETEligibleInvoices
    * @apiGroup OffersFinancialAPI
    * 
    *

@@ -540,7 +540,6 @@ var router = express.Router();
    *     }
    *     ]
    * }
-   * 
    * @apiSuccess {Object} offer offer Object.
    * @apiSuccess {String} offer.id Offer id.
    * @apiSuccess {String} offer.fixed_commission Fixed Commission.

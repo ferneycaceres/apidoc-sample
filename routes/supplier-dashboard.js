@@ -35,16 +35,22 @@ var router = express.Router();
    *     }
    *
    * @apiErrorExample Error-Response:
-   *     HTTP/1.1 4xx Any Error
+   *  HTTP/1.1 4xx Any Error
    *     {
-   *         "errors":[
-   *            {
-   *                 "field":"<field_with_error>",
-   *                 "code":"<error_code>",
-   *                 "description":"<description>",
-   *            }
-   *        ]
-   *   }
+   *         "type": <URI_REFERENCE_THAT_IDENTIFIES_THE_TYPE_OF_PROBLEM>,
+   *         "title": <HUMAN_READABLE_SUMMARY_OF_THE_PROBLEM>,
+   *         "code":<HTTP_CODE>
+   *         "invalid-params": [ 
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    },
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    }
+   *                  ]
+   *     }
    * 
    * @apiExample {curl} Example usage:
    *     curl -XGET -d '{
@@ -79,16 +85,22 @@ var router = express.Router();
    *     }
    *
    * @apiErrorExample Error-Response:
-   *     HTTP/1.1 4xx Any Error
+   *  HTTP/1.1 4xx Any Error
    *     {
-   *         "errors":[
-   *            {
-   *                 "field":"<field_with_error>",
-   *                 "code":"<error_code>",
-   *                 "description":"<description>",
-   *            }
-   *        ]
-   *   }
+   *         "type": <URI_REFERENCE_THAT_IDENTIFIES_THE_TYPE_OF_PROBLEM>,
+   *         "title": <HUMAN_READABLE_SUMMARY_OF_THE_PROBLEM>,
+   *         "code":<HTTP_CODE>
+   *         "invalid-params": [ 
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    },
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    }
+   *                  ]
+   *     }
    * 
    * @apiExample {curl} Example usage:
    *     curl -XGET -d '{
@@ -127,16 +139,22 @@ var router = express.Router();
    *     }
    *
    * @apiErrorExample Error-Response:
-   *     HTTP/1.1 4xx Any Error
+   *  HTTP/1.1 4xx Any Error
    *     {
-   *         "errors":[
-   *            {
-   *                 "field":"<field_with_error>",
-   *                 "code":"<error_code>",
-   *                 "description":"<description>",
-   *            }
-   *        ]
-   *   }
+   *         "type": <URI_REFERENCE_THAT_IDENTIFIES_THE_TYPE_OF_PROBLEM>,
+   *         "title": <HUMAN_READABLE_SUMMARY_OF_THE_PROBLEM>,
+   *         "code":<HTTP_CODE>
+   *         "invalid-params": [ 
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    },
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    }
+   *                  ]
+   *     }
    * 
    * @apiExample {curl} Example usage:
    *     curl -XGET -d '{
@@ -196,17 +214,23 @@ var router = express.Router();
    *           "address":<string>
    *     }
    *
-   * @apiErrorExample Error-Response:
-   *     HTTP/1.1 4xx Any Error
+  * @apiErrorExample Error-Response:
+   *  HTTP/1.1 4xx Any Error
    *     {
-   *         "errors":[
-   *            {
-   *                 "field":"<field_with_error>",
-   *                 "code":"<error_code>",
-   *                 "description":"<description>",
-   *            }
-   *        ]
-   *   }
+   *         "type": <URI_REFERENCE_THAT_IDENTIFIES_THE_TYPE_OF_PROBLEM>,
+   *         "title": <HUMAN_READABLE_SUMMARY_OF_THE_PROBLEM>,
+   *         "code":<HTTP_CODE>
+   *         "invalid-params": [ 
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    },
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    }
+   *                  ]
+   *     }
    * 
    * @apiExample {curl} Example usage:
    *     curl -XPUT -d '{
@@ -273,16 +297,22 @@ var router = express.Router();
    *     }
    *
    * @apiErrorExample Error-Response:
-   *     HTTP/1.1 4xx Any Error
+   *  HTTP/1.1 4xx Any Error
    *     {
-   *         "errors":[
-   *            {
-   *                 "field":"<field_with_error>",
-   *                 "code":"<error_code>",
-   *                 "description":"<description>",
-   *            }
-   *        ]
-   *   }
+   *         "type": <URI_REFERENCE_THAT_IDENTIFIES_THE_TYPE_OF_PROBLEM>,
+   *         "title": <HUMAN_READABLE_SUMMARY_OF_THE_PROBLEM>,
+   *         "code":<HTTP_CODE>
+   *         "invalid-params": [ 
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    },
+   *                    {
+   *                      "name": <FIELD_ERROR>,
+   *                      "reason": <REASON_OF_ERROR>
+   *                    }
+   *                  ]
+   *     }
    * 
    * @apiExample {curl} Example usage:
    *     curl -XPUT -d '{

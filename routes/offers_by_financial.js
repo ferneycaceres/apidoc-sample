@@ -20,7 +20,7 @@ var router = express.Router();
    * @apiParam {String} type_sort Type Sort (DES or ASC).
    * 
    * @apiHeaderExample {json} Request-Example:
-   *              { "Content-Type": "application/json",
+   *              { "ent-Type": "application/json",
    *                "Authorization":"Bearer B1q2hUEKmeVp9zWepx9cnp"
    *              }
    *
@@ -217,7 +217,7 @@ var router = express.Router();
   /**
    @api {put} /offers/<offer_id>/reject [Financial] Reject offer postulated by supplier
 
-   * @apiDescription Post Accept offer postulated by supplier
+   * @apiDescription Put Accept offer postulated by supplier
    * @apiVersion 1.0.0
    * @apiName PUTRejectOffer
    * @apiGroup OffersFinancialAPI
@@ -287,7 +287,7 @@ var router = express.Router();
    *   }
    * @apiExample {curl} Example usage:
    *    curl -H "Content-Type: application/json" \
-   *          -X POST https://kong.portalfinance.co/offers/<offer_id>/Reject
+   *          -X PUT https://kong.portalfinance.co/offers/<offer_id>/reject
    */
 
 

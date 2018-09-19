@@ -378,8 +378,8 @@ var router = express.Router();
    *      "offer":{
    *        "offer_number":<string>,
    *        "offer_amount":<number>,
-   *        "offer_issue_date":<date>,
-   *        "offer_due_date":<date>,
+   *        "issue_date":<date>,
+   *        "due_date":<date>,
    *        "fixed_commission":<number>,
    *        "variable_commission":<number>,
    *        "transactions_expenses":<number>
